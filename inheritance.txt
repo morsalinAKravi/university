@@ -1,0 +1,68 @@
+#include<iostream>
+using namespace std;
+
+class A
+{
+    protected:
+    int data;
+    public:
+        void setData(int d)
+        {
+            data = d;
+        }
+        int getData()
+        {
+            return data;
+        }
+        A()
+        {
+            cout<<"this is empty/default constructor of A!"<<endl;
+        }
+        A(int d)
+        {
+            cout<<"this is parameterized constructor of A!"<<endl;
+            data = d;
+        }
+        ~A()
+        {
+            cout<<"A destructed "<<endl;
+        }
+
+
+};
+
+class B: public A
+{
+    protected:
+        float data2;
+    public:
+        void setData2(float d2)
+        {
+            data2 = d2;
+        }
+        float getData2()
+        {
+            return data2;
+        }
+        B()
+        {
+            cout<<"this is empty/default constructor of B!"<<endl;
+        }
+        B(float d2, int x): A(x)
+        {
+            cout<<"this is parameterized constructor of B!"<<endl;
+        }
+        ~B()
+        {
+            cout<<"B destructed "<<endl;
+        }
+
+};
+int main()
+{
+    A a;
+    A a1(10);
+    B b;   // child class constructor calls the constructor of its parent
+    B b1(10.5, 20);
+
+}

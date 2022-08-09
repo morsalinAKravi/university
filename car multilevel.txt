@@ -1,0 +1,70 @@
+#include<iostream>
+using namespace std;
+
+class car{
+protected:
+    int wheel; float fuel;
+public:
+    car()
+    {
+        cout<<"Default for car"<<endl;
+    }
+    car(int w, float f)
+    {
+        wheel = w;  // set
+        fuel = f;
+        cout<<"Parameterized for car"<<endl;
+    }
+    /*~car()
+    {
+        cout<<"destroyed"<<endl;
+    }*/
+    void showData()
+    {
+        cout<<"Wheel: "<<wheel<<" "<<"Fuel: "<<fuel<<endl;
+    }
+
+};
+class volvo : public car
+{
+public:
+    volvo()
+    {
+        cout<<"Empty for volvo"<<endl;
+    }
+    volvo(int x, float y) : car(x,y)
+    {
+        cout<<"parameterized for volvo"<<endl;
+    }
+};
+class toyota : public volvo
+{
+    protected:
+    bool steering;
+
+    public:
+        toyota()
+        {
+            cout<<"default for toyota"<<endl;
+        }
+        toyota(bool s, int a, float b) : volvo(a,b)
+        {
+            steering = s; // set
+            cout<<"parameterized for toyota"<<endl;
+        }
+        void showInfo()
+        {
+            car :: showData();
+            cout<<"Steering: "<<steering<<endl;
+        }
+
+};
+int main()
+{
+   //volvo v;
+   //toyota t;
+   volvo v1 (5, 6.78);
+   v1.showData();
+   toyota t1(true, 4, 5.79);
+   t1.showInfo();
+}

@@ -1,0 +1,98 @@
+#include<iostream>
+using namespace std;
+
+class A
+{
+   protected:
+       int data;
+   public:
+       void setData(int d)
+       {
+           data = d;
+       }
+       int getData()
+       {
+           return data;
+       }
+       A()
+       {
+           cout<<"this is empty A"<<endl;
+       }
+       A(int d)
+       {
+           data = d;
+           cout<<"this is parameterized A"<<endl;
+       }
+       ~A()
+       {
+           cout<<"This is destructor of A"<<endl;
+       }
+};
+class B: public A
+{
+    protected:
+    float data2;
+    public:
+    void setData2(float d2)
+    {
+        data2 = d2;
+    }
+    float getdata2()
+    {
+        return data2;
+    }
+    B()
+    {
+        cout<<"This is empty B"<<endl;
+    }
+    B(float d2,int d): A(d)
+    {
+        cout<<"Parameterized of B"<<endl;
+        data2 = d2;
+    }
+    ~B()
+    {
+        cout<<"Destructor of B"<<endl;
+    }
+
+};
+class C: public B
+{
+    protected:
+    double data3;
+    public:
+    void setData3(double d3)
+    {
+        data3 = d3;
+    }
+    double getdata3()
+    {
+        return data3;
+    }
+    C()
+    {
+        cout<<"This is empty C"<<endl;
+    }
+    C(double d3, float x, int y): B(x, y)
+    {
+        cout<<"Parameterized of C"<<endl;
+        data3 = d3;
+    }
+    ~C()
+    {
+        cout<<"Destructor of C"<<endl;
+    }
+
+};
+int main()
+{
+    A a;
+    A a1(10);
+    B b;
+    //b.setData(20);
+    //cout<<b.getData();
+    B b1(10.4,10);
+    C c;
+    C c1(10.3, 20.5, 20);
+
+    }

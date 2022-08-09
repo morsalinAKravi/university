@@ -1,0 +1,69 @@
+#include<iostream>
+using namespace std;
+
+class Car
+{
+protected:
+    int wheel; float fuel;
+public:
+    Car()
+    {
+        cout<<"This is empty for CAR"<<endl;
+    }
+    Car(int w, float f)
+    {
+        wheel = w; // parameter pass or set
+        fuel = f;
+        cout<<"This is parameterized cons for CAR"<<endl;
+    }
+    void showData()
+    {
+        cout<<"Wheel :"<<wheel<<" "<<"Fuel: "<<fuel<<endl;
+    }
+
+};
+class Volvo : public Car
+{
+protected:
+    bool steering;
+    public:
+    Volvo()
+    {
+        cout<<"This empty for Volvo"<<endl;
+    }
+    Volvo(bool s, int x, float y): Car(x,y)
+    {
+        steering = s; //set
+        cout<<"This is parameterized 1 for Volvo"<<endl;
+    }
+    //Volvo(int x, float y): Car(x,y)
+    //{
+        //cout<<"This is parameterized 2 for Volvo"<<endl;
+    //}
+
+
+};
+
+class Toyota: public Car
+{
+public:
+    Toyota()
+    {
+        cout<<"Empty for toyota"<<endl;
+    }
+    Toyota( int x, float y): Car(x,y)
+    {
+        cout<<"Parameterized for toyota"<<endl;
+    }
+};
+int main()
+{
+    Car c;
+    Volvo v;
+    Volvo v1(true, 4, 3.78);
+    v1.showData();
+    Toyota t;
+    Toyota t1(6, 4.67);
+    t1.showData();
+
+}

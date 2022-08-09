@@ -1,0 +1,66 @@
+#include<iostream>
+using namespace std;
+
+class Animal
+{
+protected:
+    int legs, head;
+public:
+    Animal()
+    {
+        cout<<"Empty for Animal"<<endl;
+    }
+    Animal(int l, int h)
+    {
+        legs = l;
+        head = h;
+        cout<<"Parameterized for Animal"<<endl;
+    }
+    void showInfo()
+    {
+        cout<<"Legs: "<<legs<<"Head: "<<" "<<head<<endl;
+    }
+};
+class Mammal : public Animal
+{
+public:
+    Mammal()
+    {
+        cout<<"Empty for Mammal"<<endl;
+    }
+    Mammal(int a, int b): Animal(a,b)
+    {
+        cout<<"Parameterized for Mammal"<<endl;
+    }
+};
+class Dog: public Mammal
+{
+protected:
+    int tail;
+public:
+    Dog()
+    {
+        cout<<"Empty for dog"<<endl;
+    }
+    Dog(int t, int x, int y) : Mammal(x,y)
+    {
+        tail = t;
+        cout<<"Parameterized for Dog"<<endl;
+    }
+    void showTail()
+    {
+        Animal::showInfo();
+        cout<<"Tail:"<<tail<<endl;
+    }
+};
+int main()
+{
+   Animal a;
+   Mammal m;
+   Mammal m1(4,1);
+   m1.showInfo();
+   Dog d;
+   Dog d1(1,4,1);
+   //d1.showInfo();
+   d1.showTail();
+}

@@ -1,0 +1,45 @@
+#include<iostream>
+using namespace std;
+
+class car{
+protected:
+    int wheel; float fuel;
+public:
+    car()
+    {
+        cout<<"Empty cons"<<endl;
+    }
+    car(int w, float f)
+    {
+        wheel = w;
+        fuel = f;   // setting the data
+    }
+
+    void showData()
+    {
+        cout<<"Wheel:"<<wheel<<"Fuel in liter :"<<fuel<<endl;
+    }
+};
+
+class volvo : public car
+{
+public:
+
+    volvo()
+    {
+        cout<<"empty of volvo called "<<endl;
+    }
+
+    volvo (int x, float y): car (x,y)
+    {
+        cout<<"Parameterized of volvo: "<<endl;
+    }
+};
+int main()
+{
+    car c;
+    volvo v;
+    volvo v1(10, 2.5);
+    v1.showData();
+
+}
